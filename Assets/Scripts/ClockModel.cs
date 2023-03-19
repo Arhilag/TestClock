@@ -49,7 +49,6 @@ public class ClockModel
             {
                 _time.Hour -= 24;
             }
-            // Debug.Log($"{_time.Hour}:{_time.Minute}:{_time.Second}");
             OnChangeTime?.Invoke(_time);
         }
     }

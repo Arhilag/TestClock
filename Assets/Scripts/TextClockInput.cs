@@ -10,6 +10,9 @@ public class TextClockInput : MonoBehaviour
     [SerializeField] private TMP_InputField _inputField;
     [SerializeField] private TMP_Text _inputText;
     private int _numWord = 1;
+    private int _maxHour = 23;
+    private int _maxMinutes = 59;
+    private int _maxSeconds = 59;
 
     public Action<Time> OnChangeText;
 
@@ -73,17 +76,17 @@ public class TextClockInput : MonoBehaviour
         timeData.Hour = int.Parse(hourString);
         timeData.Minute = int.Parse(minutesString);
         timeData.Second = int.Parse(secondsString);
-        if (timeData.Hour > 23)
+        if (timeData.Hour > _maxHour)
         {
-            timeData.Hour = 23;
+            timeData.Hour = _maxHour;
         }
-        if (timeData.Minute > 59)
+        if (timeData.Minute > _maxMinutes)
         {
-            timeData.Minute = 59;
+            timeData.Minute = _maxMinutes;
         }
-        if (timeData.Second > 59)
+        if (timeData.Second > _maxSeconds)
         {
-            timeData.Second = 59;
+            timeData.Second = _maxSeconds;
         }
         _inputText.text = $"{timeData.Hour}:{timeData.Minute}:{timeData.Second}";
         _numWord = 1;
